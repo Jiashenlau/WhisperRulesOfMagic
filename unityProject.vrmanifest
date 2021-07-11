@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.whisperrulesofmagic.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "C:\\Users\\jiash\\Desktop\\FYP Projects\\Wizards\\Whisper Rules of Magic\\WhisperRulesOfMagic\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "Whisper Rules of Magic [Testing]"
+        }
+      }
+    }
+  ]
+}
