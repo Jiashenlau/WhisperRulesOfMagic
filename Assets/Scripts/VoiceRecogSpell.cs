@@ -23,7 +23,7 @@ public class VoiceRecogSpell : MonoBehaviour
 
         //Meteor Words
         actions.Add("meteor", Meteor);
-        actions.Add("firefall", Meteor);
+        //actions.Add("firefall", Meteor);
         actions.Add("gravity", Meteor);
         actions.Add("fall", Meteor);
 
@@ -31,6 +31,8 @@ public class VoiceRecogSpell : MonoBehaviour
         actions.Add("waterblast", WaterBlast);
         actions.Add("waterball", WaterBlast);
         actions.Add("water", WaterBlast);
+        actions.Add("whatthe", WaterBlast);
+        actions.Add("whater", WaterBlast);
 
         //IceSpear Words
         actions.Add("icespear", IceSpears);

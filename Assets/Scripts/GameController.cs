@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Valve.VR;
 
 public class GameController : MonoBehaviour
@@ -17,6 +18,11 @@ public class GameController : MonoBehaviour
         set
         {
             _playerHealth = value;
+
+            if (playerHealth <= 0)
+            {
+                PlayerDeath();
+            }
         }
     }
 
@@ -43,6 +49,11 @@ public class GameController : MonoBehaviour
         set
         {
             _zombiesKilled = value;
+
+            if (zombieSpawner != null)
+            {
+                zombieSpawner.SpawnTimerChanger();
+            }
         }
     }
 
@@ -52,6 +63,10 @@ public class GameController : MonoBehaviour
     public Camera mainCam;
     public RaycastHit hit;
     public Vector3 currentLookingPoint;
+    public ZombieSpawner zombieSpawner;
+    public Transform rayOrb;
+    public Transform player;
+    public Transform respawnPoint;
 
     public bool isRightGripping = false;
     public bool isSpellHeld = false;
@@ -66,6 +81,8 @@ public class GameController : MonoBehaviour
     {
         StartCoroutine(nameof(HealthRegen));
         StartCoroutine(nameof(ManaRegen));
+
+        zombieSpawner = FindObjectOfType<ZombieSpawner>();
     }
 
     private void OnApplicationQuit()
@@ -87,7 +104,15 @@ public class GameController : MonoBehaviour
 
         if (Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out hit))
         {
+            Debug.DrawRay(mainCam.transform.position, mainCam.transform.forward * 1000, Color.green);
+
             currentLookingPoint = hit.point;
+            rayOrb.position = currentLookingPoint;
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            playerHealth -= 100;
         }
 
         Debug.LogFormat("Right Hand Grip: {0} || SpellHeld: {1}", isRightGripping, isSpellHeld);
@@ -97,7 +122,6 @@ public class GameController : MonoBehaviour
     {
         while (true)
         {
-
             if (playerHealth < 10)
             {
                 playerHealth += healthRegenRate;
@@ -147,5 +171,15 @@ public class GameController : MonoBehaviour
     public void ZombiesKilledModify(int killed)
     {
         zombiesKilled += killed;
+    }
+
+    public void PlayerDeath()
+    {
+        zombiesKilled = 0;
+        playerHealth = 10;
+        playerMana = 100;
+
+        player.position = respawnPoint.position;
+        zombieSpawner.KillAllZombies();
     }
 }

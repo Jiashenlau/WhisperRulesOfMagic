@@ -124,7 +124,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136474176992258083}
-  m_LocalRotation: {x: -0, y: 0.60484886, z: -0, w: 0.79634035}
+  m_LocalRotation: {x: 0, y: 0.6048493, z: 0, w: 0.79634}
   m_LocalPosition: {x: 8.19, y: 2.237, z: 9.09}
   m_LocalScale: {x: 1, y: 3, z: 1}
   m_Children:
@@ -196,9 +196,10 @@ MonoBehaviour:
   controller: {fileID: 0}
   zombieAgent: {fileID: 1136474176992258085}
   player: {fileID: 0}
+  goopEffect: {fileID: 1000010675638318, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c, type: 3}
   damage: 1
   _zombieHealth: 100
-  _zombieSpeed: 2
+  _zombieSpeed: 0.5
 --- !u!65 &1136474176992258086
 BoxCollider:
   m_ObjectHideFlags: 0

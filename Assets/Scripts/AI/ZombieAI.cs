@@ -65,8 +65,8 @@ public class ZombieAI : MonoBehaviour
 
     public void ChangeZombieSpeed(float speed)
     {
-        _zombieSpeed = speed;
-        zombieAgent.speed = _zombieSpeed;
+        zombieSpeed = speed;
+        zombieAgent.speed = zombieSpeed;
     }
 
     void CheckForDeath()
