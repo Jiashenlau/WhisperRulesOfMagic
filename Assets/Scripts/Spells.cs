@@ -18,4 +18,20 @@ public class Spells : MonoBehaviour
 
         Debug.Log("Fireball Spawned");
     }
+
+    public void WaterBlast()
+    {
+        var spell = Instantiate(spellObjects[1], rightHandTransform.position, rightHandTransform.rotation);
+        rightHand.AttachObject(spell, GrabTypes.Grip);
+
+        Debug.Log("WaterBlast Spawned");
+    }
+
+    public void Meteor()
+    {
+        var spell = Instantiate(spellObjects[0], rightHandTransform.position, rightHandTransform.rotation);
+        rightHand.AttachObject(spell, GrabTypes.Grip);
+
+        Debug.Log("Meteor Spawned");
+    }
 }

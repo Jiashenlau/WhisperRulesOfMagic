@@ -39,7 +39,7 @@ public class SpellNamePopUp : MonoBehaviour
             colorAlpha = new Color(colorAlpha.r, colorAlpha.g, colorAlpha.b, colorAlpha.a - Time.unscaledDeltaTime);
             spellNameText.color = colorAlpha;
 
-            yield return -1;
+            yield return null;
         }
 
         spellName.SetActive(false);

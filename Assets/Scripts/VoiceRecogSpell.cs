@@ -17,7 +17,20 @@ public class VoiceRecogSpell : MonoBehaviour
 
     private void Awake()
     {
+        //fireball words
         actions.Add("fireball", FireBall);
+        actions.Add("fire", FireBall);
+
+        //Meteor Words
+        actions.Add("meteor", Meteor);
+        actions.Add("firefall", Meteor);
+        actions.Add("gravity", Meteor);
+        actions.Add("fall", Meteor);
+
+        //WaterBlast Words
+        actions.Add("waterblast", WaterBlast);
+        actions.Add("waterball", WaterBlast);
+        actions.Add("water", WaterBlast);
     }
 
     // Start is called before the first frame update
@@ -43,8 +56,32 @@ public class VoiceRecogSpell : MonoBehaviour
         }
     }
 
+    #region SpellsToTrigger
     void FireBall()
     {
-        spells.Fireball();
+        if (controller.playerMana >= 10)
+        {
+            spells.Fireball();
+            controller.ModifyMana(10);
+        }
     }
+
+    void WaterBlast()
+    {
+        if (controller.playerMana >= 20)
+        {
+            spells.WaterBlast();
+            controller.ModifyMana(20);
+        }
+    }
+
+    void Meteor()
+    {
+        if (controller.playerMana >= 50)
+        {
+            spells.Meteor();
+            controller.ModifyMana(50);
+        }
+    }
+    #endregion
 }
