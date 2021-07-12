@@ -22,7 +22,7 @@ public class FireballSpell : MonoBehaviour
             fireParticles = firePrefab.GetComponent<ParticleSystem>();
         }
 
-        Destroy(gameObject, 10f);
+        //Destroy(gameObject, 10f);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -9,6 +9,8 @@ public class Spells : MonoBehaviour
     public Transform rightHandTransform;
     public Hand rightHand;
 
+    public Transform skySpawn;
+
     public GameObject[] spellObjects;
 
     public void Fireball()
@@ -29,9 +31,24 @@ public class Spells : MonoBehaviour
 
     public void Meteor()
     {
-        var spell = Instantiate(spellObjects[0], rightHandTransform.position, rightHandTransform.rotation);
-        rightHand.AttachObject(spell, GrabTypes.Grip);
+        var spell = Instantiate(spellObjects[2], skySpawn.position, skySpawn.rotation);
 
         Debug.Log("Meteor Spawned");
+    }
+
+    public void IceSpears()
+    {
+        var spell = Instantiate(spellObjects[3], rightHandTransform.position, rightHandTransform.rotation);
+        rightHand.AttachObject(spell, GrabTypes.Grip);
+
+        Debug.Log("Ice Spear Spawned");
+    }
+
+    public void AirPush()
+    {
+        var spell = Instantiate(spellObjects[4], rightHandTransform.position, rightHandTransform.rotation);
+        rightHand.AttachObject(spell, GrabTypes.Grip);
+
+        Debug.Log("AirPush Spawned");
     }
 }

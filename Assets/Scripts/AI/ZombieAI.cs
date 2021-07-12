@@ -8,6 +8,9 @@ public class ZombieAI : MonoBehaviour
     public GameController controller;
     public NavMeshAgent zombieAgent;
     public Transform player;
+    public GameObject goopEffect;
+
+    public int damage = 1;
 
     public float _zombieHealth;
     public float zombieHealth
@@ -46,6 +49,15 @@ public class ZombieAI : MonoBehaviour
         zombieAgent.speed = zombieSpeed;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Player"))
+        {
+            controller.ModifyHealth(damage);
+            Destroy(gameObject);
+        }
+    }
+
     private void Update()
     {
         zombieAgent.SetDestination(player.position);
@@ -64,6 +76,8 @@ public class ZombieAI : MonoBehaviour
             StopAllCoroutines();
             controller.ZombiesKilledModify(1);
             Destroy(gameObject, 5);
+            var goop = Instantiate(goopEffect, transform.position, transform.rotation);
+            Destroy(goop, 3f);
             gameObject.SetActive(false);
         }
     }
@@ -76,5 +90,10 @@ public class ZombieAI : MonoBehaviour
     void UpdateZombieSpeed()
     {
         zombieAgent.speed = _zombieSpeed;
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }

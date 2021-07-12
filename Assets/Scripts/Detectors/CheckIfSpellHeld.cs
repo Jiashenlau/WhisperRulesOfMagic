@@ -16,6 +16,8 @@ public class CheckIfSpellHeld : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        Debug.Log(other.name);
+        
         if (other != null && other.CompareTag("Spells"))
         {
             controller.isSpellHeld = true;

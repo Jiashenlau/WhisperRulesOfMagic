@@ -22,7 +22,7 @@ public class WaterBlastScript : MonoBehaviour
             waterParticles = waterPrefab.GetComponent<ParticleSystem>();
         }
 
-        Destroy(gameObject, 10f);
+        //Destroy(gameObject, 10f);
     }
 
     private void OnTriggerEnter(Collider other)

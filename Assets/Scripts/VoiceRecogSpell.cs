@@ -31,6 +31,23 @@ public class VoiceRecogSpell : MonoBehaviour
         actions.Add("waterblast", WaterBlast);
         actions.Add("waterball", WaterBlast);
         actions.Add("water", WaterBlast);
+
+        //IceSpear Words
+        actions.Add("icespear", IceSpears);
+        actions.Add("icespears", IceSpears);
+        actions.Add("icelance", IceSpears);
+        actions.Add("icelances", IceSpears);
+        actions.Add("ice", IceSpears);
+        actions.Add("icicle", IceSpears);
+        actions.Add("nice", IceSpears);
+
+        //AirPush Words
+        actions.Add("airpush", AirPush);
+        actions.Add("air", AirPush);
+        actions.Add("push", AirPush);
+        actions.Add("force", AirPush);
+        actions.Add("back", AirPush);
+
     }
 
     // Start is called before the first frame update
@@ -59,7 +76,7 @@ public class VoiceRecogSpell : MonoBehaviour
     #region SpellsToTrigger
     void FireBall()
     {
-        if (controller.playerMana >= 10)
+        if (controller.playerMana >= 30)
         {
             spells.Fireball();
             controller.ModifyMana(10);
@@ -68,7 +85,7 @@ public class VoiceRecogSpell : MonoBehaviour
 
     void WaterBlast()
     {
-        if (controller.playerMana >= 20)
+        if (controller.playerMana >= 50)
         {
             spells.WaterBlast();
             controller.ModifyMana(20);
@@ -77,10 +94,28 @@ public class VoiceRecogSpell : MonoBehaviour
 
     void Meteor()
     {
-        if (controller.playerMana >= 50)
+        if (controller.playerMana >= 100)
         {
             spells.Meteor();
             controller.ModifyMana(50);
+        }
+    }
+
+    void IceSpears()
+    {
+        if (controller.playerMana >= 100)
+        {
+            spells.IceSpears();
+            controller.ModifyMana(100);
+        }
+    }
+
+    void AirPush()
+    {
+        if (controller.playerMana >= 30)
+        {
+            spells.AirPush();
+            controller.ModifyMana(30);
         }
     }
     #endregion
