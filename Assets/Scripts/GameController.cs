@@ -115,6 +115,11 @@ public class GameController : MonoBehaviour
             playerHealth -= 100;
         }
 
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            zombiesKilled += 10;
+        }
+
         Debug.LogFormat("Right Hand Grip: {0} || SpellHeld: {1}", isRightGripping, isSpellHeld);
     }
 
