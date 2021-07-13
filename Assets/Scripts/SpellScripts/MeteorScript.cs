@@ -30,7 +30,7 @@ public class MeteorScript : MonoBehaviour
             meteorParticles = meteorPrefab.GetComponent<ParticleSystem>();
         }
 
-        Destroy(gameObject, 10f);
+        Destroy(gameObject, 20f);
     }
 
     private void Start()
@@ -69,19 +69,6 @@ public class MeteorScript : MonoBehaviour
         {
             Debug.Log("Hit: " + other.name);
 
-            //Destroy(hitPointMarker);
-
-            //meteorParticles.Stop();
-            //meteorExplosion.Play();
-            //Destroy(meteorPrefab, 5);
-            //Destroy(meteorExplosion.gameObject, 5);
-            //meteorExplosion.gameObject.transform.parent = null;
-            //meteorPrefab.transform.parent = null;
-            //StopAllCoroutines();
-            //HitEnemyInArea();
-
-            //Destroy(this.gameObject, 0.1f);
-
             DestroyMeteor();
         }
     }
@@ -93,7 +80,7 @@ public class MeteorScript : MonoBehaviour
 
     void HitEnemyInArea()
     {
-        int maxColliders = 5;
+        int maxColliders = 10;
         Collider[] hitColliders = new Collider[maxColliders];
         int numColliders = Physics.OverlapSphereNonAlloc(hitpoint, explosionRadius, hitColliders, layerMask);
 
@@ -121,6 +108,6 @@ public class MeteorScript : MonoBehaviour
         StopAllCoroutines();
         HitEnemyInArea();
 
-        Destroy(this.gameObject, 0.1f);
+        Destroy(this.gameObject, 0.2f);
     }
 }

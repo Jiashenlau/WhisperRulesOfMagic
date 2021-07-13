@@ -6,12 +6,18 @@ using Valve.VR.InteractionSystem;
 
 public class Spells : MonoBehaviour
 {
+    public GameController controller;
     public Transform rightHandTransform;
     public Hand rightHand;
 
     public Transform skySpawn;
 
     public GameObject[] spellObjects;
+
+    private void Start()
+    {
+        controller = FindObjectOfType<GameController>();
+    }
 
     public void Fireball()
     {
@@ -43,12 +49,27 @@ public class Spells : MonoBehaviour
 
         Debug.Log("Ice Spear Spawned");
     }
+    public void Quake()
+    {
+        var spell = Instantiate(spellObjects[4], controller.currentLookingPoint, new Quaternion(0, controller.mainCam.transform.rotation.y, 0, controller.mainCam.transform.rotation.w));
+        //rightHand.AttachObject(spell, GrabTypes.Grip);
+
+        Debug.Log("Quake Spawned");
+    }
 
     public void AirPush()
     {
-        var spell = Instantiate(spellObjects[4], rightHandTransform.position, rightHandTransform.rotation);
+        var spell = Instantiate(spellObjects[5], rightHandTransform.position, rightHandTransform.rotation);
         rightHand.AttachObject(spell, GrabTypes.Grip);
 
         Debug.Log("AirPush Spawned");
+    }
+
+    public void Bomb()
+    {
+        var spell = Instantiate(spellObjects[6], rightHandTransform.position, rightHandTransform.rotation);
+        rightHand.AttachObject(spell, GrabTypes.Grip);
+
+        Debug.Log("Bomb Spawned");
     }
 }

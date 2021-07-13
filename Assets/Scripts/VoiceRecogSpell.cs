@@ -43,6 +43,14 @@ public class VoiceRecogSpell : MonoBehaviour
         actions.Add("icicle", IceSpears);
         actions.Add("nice", IceSpears);
 
+        //Quake Words
+        actions.Add("quake", Quake);
+        actions.Add("earth", Quake);
+        actions.Add("rise", Quake);
+        actions.Add("earthlance", Quake);
+        actions.Add("earthquake", Quake);
+        actions.Add("earthspear", Quake);
+
         //AirPush Words
         actions.Add("airpush", AirPush);
         actions.Add("air", AirPush);
@@ -50,6 +58,11 @@ public class VoiceRecogSpell : MonoBehaviour
         actions.Add("force", AirPush);
         actions.Add("back", AirPush);
 
+        //Bomb Words
+        actions.Add("bomb", Bomb);
+        actions.Add("explode", Bomb);
+        actions.Add("explosion", Bomb);
+        actions.Add("grenade", Bomb);
     }
 
     // Start is called before the first frame update
@@ -87,7 +100,7 @@ public class VoiceRecogSpell : MonoBehaviour
 
     void WaterBlast()
     {
-        if (controller.playerMana >= 50)
+        if (controller.playerMana >= 20)
         {
             spells.WaterBlast();
             controller.ModifyMana(20);
@@ -96,10 +109,10 @@ public class VoiceRecogSpell : MonoBehaviour
 
     void Meteor()
     {
-        if (controller.playerMana >= 100)
+        if (controller.playerMana >= 80)
         {
             spells.Meteor();
-            controller.ModifyMana(50);
+            controller.ModifyMana(80);
         }
     }
 
@@ -112,12 +125,30 @@ public class VoiceRecogSpell : MonoBehaviour
         }
     }
 
+    void Quake()
+    {
+        if (controller.playerMana >= 80)
+        {
+            spells.Quake();
+            controller.ModifyMana(80);
+        }
+    }
+
     void AirPush()
     {
         if (controller.playerMana >= 30)
         {
             spells.AirPush();
             controller.ModifyMana(30);
+        }
+    }
+
+    void Bomb()
+    {
+        if (controller.playerMana >= 50)
+        {
+            spells.Bomb();
+            controller.ModifyMana(50);
         }
     }
     #endregion
